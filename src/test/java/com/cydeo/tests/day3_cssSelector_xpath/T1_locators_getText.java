@@ -1,5 +1,6 @@
 package com.cydeo.tests.day3_cssSelector_xpath;
 
+import com.cydeo.utilities.WebDriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -16,8 +17,12 @@ public class T1_locators_getText {
 
 
         //        1- Open a chrome browser
-                  WebDriverManager.chromedriver().setup();
-                  WebDriver driver=new ChromeDriver();
+        //        WebDriverManager.chromedriver().setup();
+        //        WebDriver driver=new ChromeDriver();
+                    WebDriver driver= WebDriverFactory.getDriver("chrome");
+
+
+
                   driver.manage().window().maximize();
         //        2- Go to: https://login1.nextbasecrm.com/
                    driver.get("https://login1.nextbasecrm.com/ ");
