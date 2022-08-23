@@ -21,9 +21,16 @@ public class T6_StaleElementReferenceException {
 
         WebElement cydeoLink = driver.findElement(By.xpath("//a[@href='https://cydeo.com/']"));
         System.out.println("cydeoLink.isDisplayed() = " + cydeoLink.isDisplayed());
+
+
+
         //4- Refresh the page.
         driver.navigate().refresh();
+
+        //we are refreshing the web element by reassigning the web element to handle the stale... exception
+        cydeoLink = driver.findElement(By.xpath("//a[@href='https://cydeo.com/']"));
         //5- Verify it is displayed, again.
+        System.out.println("cydeoLink.isDisplayed() = " + cydeoLink.isDisplayed());
 
 
 
