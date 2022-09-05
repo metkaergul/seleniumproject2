@@ -1,9 +1,9 @@
 package com.cydeo.tests.day8_properties_config_reader;
 
+import com.cydeo.utilities.ConfigurationReader;
 import org.testng.annotations.Test;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -20,10 +20,11 @@ public class ReadingProperties {
         properties.load(file);
 
 
-        //use properties object to read value
+       // use properties object to read value
         System.out.println("properties.getProperty(\"browser\") = " + properties.getProperty("browser"));
         System.out.println("properties.getProperty(\"env\") = " + properties.getProperty("env"));
         System.out.println("properties.getProperty(\"username\") = " + properties.getProperty("username"));
+
 
 
     }
