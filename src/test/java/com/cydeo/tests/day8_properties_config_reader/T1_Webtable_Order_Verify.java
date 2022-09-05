@@ -21,8 +21,8 @@ public class T1_Webtable_Order_Verify {
         driver  = WebDriverFactory.getDriver("chrome");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("https://practice.cydeo.com/web-tables ");
     }
-
 
     @Test
     public void orderName_verify_test(){
@@ -34,7 +34,6 @@ public class T1_Webtable_Order_Verify {
         //3. Verify Bob Martin’s order date is as expected
         //Expected: 12/
 
-        driver.get("https://practice.cydeo.com/web-tables ");
 
         WebElement bobMartinCell= driver.findElement(By.xpath("//table[@class='SampleTable']/tbody//td[.='Bob Martin']"));
             String expectedName= "Bob Martin";
@@ -49,28 +48,19 @@ public class T1_Webtable_Order_Verify {
 
     }
 
-
-
-    //we use the utility method that we created
+    //we use the utility method ( returnOrderDate() ) that we created
     @Test
     public void test2(){
-
-        driver.get("https://practice.cydeo.com/web-tables ");
-
-
         String orderDate1= WebTableUtils.returnOrderDate(driver,"Bob Martin");
-
         String orderDate2= WebTableUtils.returnOrderDate(driver,"John Doe");
 
         System.out.println("orderDate1 = " + orderDate1);
         System.out.println("orderDate2 = " + orderDate2);
     }
 
-
     //we use utility method (verifyOrder() )that we created inside the webtableutils class
     @Test
     public void test3(){
-        driver.get("https://practice.cydeo.com/web-tables ");
 
         WebTableUtils.orderVerify(driver,"Alexandra Gray","04/15/2021");
 
