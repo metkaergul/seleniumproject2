@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -30,6 +32,7 @@ public class T4_Config_Practice {
         String url=  ConfigurationReader.getProperty("env");
         driver.get(url);
 
+
     }
 
 
@@ -38,10 +41,10 @@ public class T4_Config_Practice {
 
         WebElement searchBox = driver.findElement(By.xpath("//input[@name='q']"));
 
-        String search= ConfigurationReader.getProperty("search");
-        searchBox.sendKeys(search+ Keys.ENTER);
-
-        String expectedTitle="apple - Google'da Ara";
+        String searchValue= ConfigurationReader.getProperty("search");
+        searchBox.sendKeys(searchValue+ Keys.ENTER);
+        //we can make our expected title also dynamic which make our assertion always precise even if we change the data in properties file
+        String expectedTitle=searchValue+" - Google'da Ara";
         String actualTitle=driver.getTitle();
         Assert.assertEquals(expectedTitle,actualTitle);
 
