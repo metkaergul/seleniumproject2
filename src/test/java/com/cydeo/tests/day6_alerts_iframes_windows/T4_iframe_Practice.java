@@ -1,4 +1,4 @@
-package com.cydeo.tests.alerts_iframes_windows;
+package com.cydeo.tests.day6_alerts_iframes_windows;
 
 import com.cydeo.utilities.WebDriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;

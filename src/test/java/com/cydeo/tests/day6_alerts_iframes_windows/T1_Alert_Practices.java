@@ -1,4 +1,4 @@
-package com.cydeo.tests.alerts_iframes_windows;
+package com.cydeo.tests.day6_alerts_iframes_windows;
 
 import com.cydeo.utilities.WebDriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,7 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
