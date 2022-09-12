@@ -11,18 +11,18 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class task1_bigreview {
+public class T1_registration_form {
 
 
     @Test
     public void registrationForm(){
-         // 1-)Open browser
+         //  Open browser
          //  getDriver() method handles driver object and with its design pattern we can use same object
          Driver.getDriver();
 
-         //2-)Go to website: https://practice.cydeo.com/registration_form
-        String url = ConfigurationReader.getProperty("env");
-        Driver.getDriver().get(url);
+         // Go to website: https://practice.cydeo.com/registration_form
+        String registrationFormUrl = ConfigurationReader.getProperty("registration.form.url");
+        Driver.getDriver().get(registrationFormUrl);
         //first name
         WebElement firstNameInput = Driver.getDriver().findElement(By.xpath("//input[@name='firstname']"));
         String firstNameFaker= new Faker().name().firstName();
@@ -34,13 +34,12 @@ public class task1_bigreview {
 
         //FOR THE USER NAME I CALLED USERNAME DATA FROM THE CONFIGURATION.PROPERTIES FILE
         WebElement userNameInput = Driver.getDriver().findElement(By.xpath("//input[@name='username']"));
-         String userName =ConfigurationReader.getProperty("username");
+         String userName =ConfigurationReader.getProperty("registration.form.username");
         userNameInput.sendKeys(userName);
 
         //FOR THE EMAIL ADDRESS I CALLED EMAIL ADDRESS DATA FROM THE CONFIGURATION.PROPERTIES FILE
         WebElement emailInput = Driver.getDriver().findElement(By.xpath("//input[@name='email']"));
-        String email=ConfigurationReader.getProperty("email");
-        emailInput.sendKeys(email);
+        emailInput.sendKeys(userName+"@gmail.com");
 
         //FOR THE PASSWORD I CALLED PASSWORD DATA FROM THE CONFIGURATION.PROPERTIES FILE
         WebElement passwordInput = Driver.getDriver().findElement(By.xpath("//input[@name='password']"));
@@ -64,7 +63,8 @@ public class task1_bigreview {
         // Select Department/Office
         WebElement departmentDropdown = Driver.getDriver().findElement(By.xpath("//select[@name='department']"));
         Select department=new Select(departmentDropdown);
-        department.selectByVisibleText("Department of Engineering");
+//      //  department.selectByVisibleText("Department of Engineering");
+        department.selectByIndex(new Faker().number().numberBetween(1,9));
 
         //Select Job Title
         WebElement jobTitleDropdown = Driver.getDriver().findElement(By.xpath("//select[@name='job_title']"));
