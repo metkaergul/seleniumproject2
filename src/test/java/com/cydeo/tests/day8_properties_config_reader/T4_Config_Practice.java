@@ -1,6 +1,7 @@
 package com.cydeo.tests.day8_properties_config_reader;
 
 import com.cydeo.utilities.ConfigurationReader;
+import com.cydeo.utilities.Driver;
 import com.cydeo.utilities.WebDriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -18,35 +19,42 @@ import java.util.concurrent.TimeUnit;
 
 public class T4_Config_Practice {
 
-   public  WebDriver driver;
+/*   public  WebDriver driver;
 
     @BeforeMethod
     public void setUpMethod() {
         //1. Open browser
-        WebDriverManager.chromedriver().setup();
 
-        String browser= ConfigurationReader.getProperty("browser");
-        driver = WebDriverFactory.getDriver(browser);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //2. Go to:www.google.com
-        String url=  ConfigurationReader.getProperty("env");
-        driver.get(url);
+        //we are getting the browser type dynamically from our configuration
+//        String browser= ConfigurationReader.getProperty("browser");
+//        driver = WebDriverFactory.getDriver(browser);
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 
-    }
+
+
+    }*/
 
 
     @Test
     public void google_search_test(){
 
-        WebElement searchBox = driver.findElement(By.xpath("//input[@name='q']"));
+        //Driver.getDriver()--->driver
+
+        //2. Go to:www.google.com
+        String url=  ConfigurationReader.getProperty("env");
+        Driver.getDriver().get(url);
+
+
+
+        WebElement searchBox =  Driver.getDriver().findElement(By.xpath("//input[@name='q']"));
 
         String searchValue= ConfigurationReader.getProperty("search");
         searchBox.sendKeys(searchValue+ Keys.ENTER);
         //we can make our expected title also dynamic which make our assertion always precise even if we change the data in properties file
         String expectedTitle=searchValue+" - Google'da Ara";
-        String actualTitle=driver.getTitle();
+        String actualTitle= Driver.getDriver().getTitle();
         Assert.assertEquals(expectedTitle,actualTitle);
 
 
