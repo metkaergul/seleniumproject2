@@ -35,7 +35,7 @@ public class T7_Scroll {
 
 /*
 TC #7: Scroll using JavascriptExecutor
-1- Open a chrome browser aaaaAAAAAAAaaaaaAAAAAAaaaaaaAAAAAaaaaAAAA
+1- Open a chrome browser
 2- Go to: https://practice.cydeo.com/large
 3- Scroll down to “Cydeo” link
 4- Scroll up to “Home” link

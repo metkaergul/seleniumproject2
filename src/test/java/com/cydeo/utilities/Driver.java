@@ -3,6 +3,7 @@ package com.cydeo.utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -43,8 +44,10 @@ public class Driver {
         String browserType=ConfigurationReader.getProperty("browser");
         switch (browserType){
             case "chrome":
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--lang=en-GB");
                 WebDriverManager.chromedriver().setup();
-                driver= new ChromeDriver();
+                driver= new ChromeDriver(options);
                 driver.manage().window().maximize();
                 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                 break;
@@ -62,8 +65,15 @@ public class Driver {
 
         return driver;
     }
-    public static void closeDriver(){
 
+    //This method will make sure that our driver value is always null after using quit() method
+     public static void closeDriver(){
+
+            if(driver!=null){
+
+                driver.quit();//this line will terminate the existing session.value will not ever be null
+                driver=null;
+            }
 
     }
 
